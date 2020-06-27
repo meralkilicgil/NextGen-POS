@@ -9,40 +9,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProductCatalog {
-    private Map<ItemID,ProductDescription> descriptions = new HashMap<>();
-    ProductDescriptionFileOperator pfdo = new ProductDescriptionFileOperator("..\\NextGenPOS\\ProductDescriptions.txt");
+    //private Map<ItemID,ProductDescription> descriptions = new HashMap<>();
+    //ProductDescriptionFileOperator pfdo = new ProductDescriptionFileOperator("..\\NextGenPOS\\ProductDescriptions.txt");
     private LocalProducts localProducts;
     public ProductCatalog(){
-        loadProdSpecs();
+        //loadProdSpecs();
     }
 
     public ProductDescription getProductDescription(ItemID id){
-        return descriptions.get(id);
+        return this.localProducts.getDescription( id );
     }
 
-    public void loadProdSpecs(){
+    /*public void loadProdSpecs(){
         pfdo.readFromFile();
         descriptions = pfdo.getDescriptions();
-    }
+    }*/
 
     public ArrayList<String> getProductIds() {
         ArrayList<String> ids = new ArrayList<>();
-        descriptions.forEach((key, value) -> ids.add(key.toString()));
+        this.localProducts.getDescriptions().forEach((key, value) -> ids.add(key.toString()));
         return ids;
-    }
-
-    public ProductDescription getDescription(ItemID id){
-        ProductDescription ps = descriptions.get(id);
-        if(ps == null){
-            ps = this.localProducts.getDescripton(id);
-            if(ps == null){
-                ps = new ProductDescription(id, new Money(), "newdesc");
-                descriptions.put(id, ps);
-                return  ps;
-            }
-            return null;
-        }
-        return ps;
     }
 
     public void create(){

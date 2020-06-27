@@ -11,6 +11,10 @@ public class Store {
     private List<Sale> completedSales = new ArrayList<>();
     SaleFileOperator sfo = new SaleFileOperator("..\\NextGenPOS\\Sales.txt");
 
+    public Store(){
+        create();
+    }
+
     public Register getRegister(){
         return register;
     }
