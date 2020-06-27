@@ -23,4 +23,8 @@ public class Store {
     public void saveSale(Sale s){
         sfo.saveSale(s);
     }
+
+    public void create(){
+        catalog.create();
+    }
 }

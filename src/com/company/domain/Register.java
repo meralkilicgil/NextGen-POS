@@ -26,7 +26,8 @@ public class Register {
 
     public String enterItem(ItemID id, int quantity) throws CurrencyException {
         ProductDescription desc = catalog.getProductDescription(id);
-        return currentSale.makeLineItem(desc,quantity);
+        ProductDescription ps = this.catalog.getDescription(id); //new returned description
+        return currentSale.makeLineItem(ps,quantity);
     }
 
     public void makeNewSale(){
