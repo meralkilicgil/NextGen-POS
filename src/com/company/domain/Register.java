@@ -12,7 +12,7 @@ public class Register {
     private Sale currentSale;
     private Store store;
     Total total = new Total();
-    NotifcationPool notification = new NotifcationPool();
+    ItemPool notification = new ItemPool();
 
     public Register(ProductCatalog catalog, Store store){
         this.catalog=catalog;

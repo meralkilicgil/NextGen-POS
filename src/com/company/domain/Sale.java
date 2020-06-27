@@ -42,12 +42,12 @@ public class Sale implements Observer{
         SalesLineItem sl = new SalesLineItem(desc, quantity);
         String slString=sl.toString();
         if(lineItems.size() == 0){
-            observableData.manageableDataChanged(sl.getSubTotal());
+            observableData.updateTotal(sl.getSubTotal());
         }
         if (lineItems.size() > 0) { //check if there is any product in the list
             Currency firstItemCurrency =  lineItems.get(0).getSubTotal().getCurrency();
             if (firstItemCurrency == desc.getPrice().getCurrency()) {//check to see if currencies are the same
-                observableData.manageableDataChanged(sl.getSubTotal());
+                observableData.updateTotal(sl.getSubTotal());
                 lineItems.add(sl);
             } else {
                 throw new CurrencyException();

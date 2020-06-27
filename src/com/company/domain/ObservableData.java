@@ -5,5 +5,5 @@ import com.company.customTypes.Money;
 public interface ObservableData {
     void attachObserver(Observer observer);
     void detachObserver(Observer observer);
-    void manageableDataChanged( Money total);
+    void updateTotal( Money total);
 }

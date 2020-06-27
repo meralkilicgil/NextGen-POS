@@ -17,7 +17,11 @@ public class Total implements Observer {
     @Override
     public void notify(Money total) {
         finalTotal = finalTotal.add(total);
-        System.out.println("\n Total Amount: " + "\"" + finalTotal.toString() + "\"" );
+        printTotal(finalTotal);
+    }
+
+    public void printTotal(Money total){
+        System.out.println("\n Total Amount: " + "\"" + total.toString() + "\"" );
     }
 
     public void removeObserver(){

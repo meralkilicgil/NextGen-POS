@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.company.customTypes.Money;
 
-public class NotifcationPool implements ObservableData {
+public class ItemPool implements ObservableData {
     private List<Observer> observerList = new ArrayList<>();
 
     @Override
@@ -17,7 +17,7 @@ public class NotifcationPool implements ObservableData {
     }
 
     @Override
-    public void manageableDataChanged( Money total) {
+    public void updateTotal( Money total) {
         for( Observer observer : observerList){
             observer.notify(total);
         }
