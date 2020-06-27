@@ -6,8 +6,6 @@ public class ServicesFactory {
 
 
     public LocalProducts getProductsAdapter(){
-       //DBProductsAdapter externalService = dbProductsAdapter.create();
-        //return localProducts.create(externalService);
-        return localProducts.create();
+       return localProducts.create();
     }
 }
