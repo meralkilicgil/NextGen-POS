@@ -5,12 +5,26 @@ import com.company.customTypes.Money;
 
 import java.util.*;
 
-public class Sale {
+public class Sale implements Observer{
     private List<SalesLineItem> lineItems = new ArrayList<>();
     private Date date = new Date();
     private boolean isComplete = false;
     private Payment payment;
     private final Tax tax = new Tax();
+
+    private ObservableData observableData;
+    public void setObservableData(ObservableData observerData) {
+        this.observableData = observerData;
+    }
+
+    @Override
+    public void notify(Money total) {
+        System.out.println(" subtotal.toString()");
+    }
+
+    public void removeObserver(){
+        observableData.detachObserver(this);
+    }
 
     public Money getBalance() {
         return payment.getAmount().minus(getTotal());
@@ -27,9 +41,13 @@ public class Sale {
     public String makeLineItem(ProductDescription desc, int quantity) throws CurrencyException {
         SalesLineItem sl = new SalesLineItem(desc, quantity);
         String slString=sl.toString();
+        if(lineItems.size() == 0){
+            observableData.manageableDataChanged(sl.getSubTotal());
+        }
         if (lineItems.size() > 0) { //check if there is any product in the list
             Currency firstItemCurrency =  lineItems.get(0).getSubTotal().getCurrency();
             if (firstItemCurrency == desc.getPrice().getCurrency()) {//check to see if currencies are the same
+                observableData.manageableDataChanged(sl.getSubTotal());
                 lineItems.add(sl);
             } else {
                 throw new CurrencyException();

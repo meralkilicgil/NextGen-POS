@@ -11,10 +11,13 @@ public class Register {
     private ProductCatalog catalog;
     private Sale currentSale;
     private Store store;
+    Total total = new Total();
+    NotifcationPool notification = new NotifcationPool();
 
     public Register(ProductCatalog catalog, Store store){
         this.catalog=catalog;
         this.store =store;
+        total.setObservableData( notification );
     }
 
     public void endSale(){
@@ -28,6 +31,8 @@ public class Register {
 
     public void makeNewSale(){
         currentSale = new Sale();
+        currentSale.setObservableData( notification );
+        notification.attachObserver( total );
     }
 
     public void makePayment(Money cashTendered){

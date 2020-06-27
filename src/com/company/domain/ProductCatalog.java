@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ProductCatalog {
     private Map<ItemID,ProductDescription> descriptions = new HashMap<>();
-    ProductDescriptionFileOperator pfdo = new ProductDescriptionFileOperator(".\\ProductDescriptions.txt");
+    ProductDescriptionFileOperator pfdo = new ProductDescriptionFileOperator("..\\NextGenPOS\\ProductDescriptions.txt");
 
     public ProductCatalog(){
         loadProdSpecs();

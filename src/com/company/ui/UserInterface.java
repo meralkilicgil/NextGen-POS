@@ -74,7 +74,6 @@ public class UserInterface {
             System.out.println("CurrencyException:" + e.getMessage() +"\n");
         }
 
-        //TODO refresh total price
         System.out.println("Do you want to add another item? (YES to continue, else end sale)");
         String another = input.nextLine();
         if (another.toUpperCase().equals("YES")) {
